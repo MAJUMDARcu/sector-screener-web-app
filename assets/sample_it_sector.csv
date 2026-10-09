@@ -1,0 +1,11 @@
+ticker,name,pe_ratio,pb_ratio,ev_ebitda,roe_pct,roce_pct,net_margin_pct,revenue_growth_yoy_pct,eps_growth_yoy_pct,debt_to_equity,price_return_6m_pct,pct_off_52w_high
+TCS.NS,Tata Consultancy Services,27.4,13.8,18.9,45.2,58.1,19.8,6.1,7.9,0.02,4.2,-9.5
+INFY.NS,Infosys,24.1,8.6,16.2,29.6,36.4,17.1,5.4,6.8,0.09,-1.8,-14.2
+WIPRO.NS,Wipro,22.8,3.4,13.5,16.9,20.1,13.2,3.2,4.1,0.11,-5.6,-19.8
+HCLTECH.NS,HCL Technologies,25.6,6.9,15.8,23.4,29.7,15.9,5.8,8.4,0.07,7.1,-6.3
+TECHM.NS,Tech Mahindra,29.3,4.8,17.6,14.2,17.5,8.6,1.9,-3.2,0.05,-9.4,-24.1
+LTIM.NS,LTIMindtree,32.1,7.2,19.4,22.8,27.9,13.4,7.6,9.5,0.03,11.8,-4.7
+MPHASIS.NS,Mphasis,26.9,6.1,15.1,20.3,24.6,14.7,4.5,5.2,0.06,2.9,-11.6
+PERSISTENT.NS,Persistent Systems,48.7,12.4,28.3,24.1,29.4,11.9,18.4,22.7,0.04,32.6,-2.1
+COFORGE.NS,Coforge,41.2,9.8,22.7,21.6,25.8,10.4,14.2,16.3,0.18,24.3,-3.8
+LTTS.NS,L&T Technology Services,34.8,8.9,19.9,25.7,31.2,12.8,9.3,10.1,0.08,-2.4,-16.9
