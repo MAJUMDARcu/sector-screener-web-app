@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sector Screener — Quant Screen &amp; Written Stock Calls</title>
+<meta name="description" content="Paste a sector's fundamentals, get a ranked quant screen and written Buy/Hold/Sell notes for the top and bottom names." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Quant screen &middot; written stock calls</p>
+    <h1>Sector Screener</h1>
+    <p class="dek">Paste a sector's fundamentals. Get a ranked, five-factor quant screen — then an actual written
+      Buy / Hold / Sell note for the top and bottom names, drawn straight from that stock's own scores.</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="panel input-panel" id="input-panel" aria-labelledby="input-heading">
+    <h2 id="input-heading" class="panel-title"><span class="panel-index">01</span> Bring your data</h2>
+
+    <div class="field-row">
+      <label class="field">
+        <span class="field-label">Sector name</span>
+        <input type="text" id="sector-name" value="My Sector Screen" maxlength="80" />
+      </label>
+      <label class="field field-narrow">
+        <span class="field-label">Top picks</span>
+        <input type="number" id="top-n" value="3" min="1" max="10" />
+      </label>
+      <label class="field field-narrow">
+        <span class="field-label">Bottom picks</span>
+        <input type="number" id="bottom-n" value="3" min="1" max="10" />
+      </label>
+    </div>
+
+    <div class="data-input">
+      <div class="data-input-toolbar">
+        <span class="field-label">Fundamentals CSV</span>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-ghost" id="load-sample-btn">Use sample data</button>
+          <label class="btn-ghost btn-file">
+            Upload CSV
+            <input type="file" id="csv-upload" accept=".csv" hidden />
+          </label>
+          <button type="button" class="btn-ghost" id="clear-btn">Clear</button>
+        </div>
+      </div>
+      <textarea id="csv-input" rows="8" spellcheck="false"
+        placeholder="ticker,name,pe_ratio,pb_ratio,ev_ebitda,roe_pct,roce_pct,net_margin_pct,revenue_growth_yoy_pct,eps_growth_yoy_pct,debt_to_equity,price_return_6m_pct,pct_off_52w_high&#10;TCS.NS,Tata Consultancy Services,27.4,13.8,18.9,45.2,58.1,19.8,6.1,7.9,0.02,4.2,-9.5&#10;..."></textarea>
+      <p class="field-hint">Needs a header row with exactly these 13 columns. Missing values are fine — leave the cell blank.</p>
+    </div>
+
+    <details class="weights-panel">
+      <summary>Customize factor weights</summary>
+      <p class="field-hint">Defaults reflect a quality-and-growth tilt (reasonable for services-type sectors with light balance sheets). Weights are normalized to sum to 100% when you run the screen.</p>
+      <div class="weights-grid" id="weights-grid"><!-- injected by app.js --></div>
+    </details>
+
+    <button type="button" class="btn-primary" id="run-btn">Run the screen</button>
+    <p class="error-banner" id="error-banner" hidden></p>
+  </section>
+
+  <section class="panel results-panel" id="results-panel" hidden aria-labelledby="results-heading">
+    <h2 id="results-heading" class="panel-title"><span class="panel-index">02</span> Ranked sector screen</h2>
+
+    <p class="rating-band-note" id="rating-band-note"></p>
+    <p class="sample-warning" id="sample-warning" hidden></p>
+
+    <div class="rating-summary" id="rating-summary"></div>
+
+    <div class="ledger" id="ledger" role="table" aria-label="Ranked sector screen"></div>
+
+    <div class="download-row">
+      <button type="button" class="btn-secondary" id="download-csv-btn">Download ranked CSV</button>
+      <button type="button" class="btn-secondary" id="download-md-btn">Download notes (Markdown)</button>
+      <button type="button" class="btn-secondary" id="download-docx-btn">Download Word report</button>
+      <span class="download-status" id="download-status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section class="panel notes-panel" id="notes-panel" hidden aria-labelledby="notes-heading">
+    <h2 id="notes-heading" class="panel-title"><span class="panel-index">03</span> Written stock calls</h2>
+
+    <div class="notes-group">
+      <h3 class="notes-group-title">Top picks</h3>
+      <div id="top-notes" class="notes-grid"></div>
+    </div>
+    <div class="notes-group">
+      <h3 class="notes-group-title">Bottom picks</h3>
+      <div id="bottom-notes" class="notes-grid"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Illustrative tool — sample data is made up for demonstration. Not investment advice. Ratings are relative-percentile bands over the peer set you screen, not absolute price targets.</p>
+</footer>
+
+<script src="assets/engine.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
